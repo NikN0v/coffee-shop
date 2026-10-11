@@ -3,6 +3,7 @@ package com.coffeeshop.product
 import com.coffeeshop.category.CategoryRepository
 import com.coffeeshop.common.dto.PageResponse
 import com.coffeeshop.product.dto.ProductCreateRequest
+import com.coffeeshop.product.dto.ProductPatchRequest
 import com.coffeeshop.product.dto.ProductResponse
 import com.coffeeshop.product.dto.ProductUpdateRequest
 import com.fasterxml.jackson.databind.JsonNode
@@ -92,6 +93,49 @@ class ProductService(
         product.price = requireNotNull(request.price)
         product.available = requireNotNull(request.available)
         product.weight = request.weight
+        product.isDrink = newIsDrink
+        product.volume = newVolume
+
+        return productRepository.save(product).toResponse(locale)
+    }
+
+    @Transactional
+    fun patch(
+        id: Long,
+        request: ProductPatchRequest,
+        locale: Locale
+    ): ProductResponse {
+        val product = findProduct(id)
+
+        request.categoryId?.let { categoryId ->
+            product.category = categoryRepository.findById(categoryId).orElseThrow {
+                ResponseStatusException(HttpStatus.NOT_FOUND, "Категория не найдена")
+            }
+        }
+
+        request.nameRu?.let { product.nameRu = it.trim() }
+        request.nameEn?.let { product.nameEn = it.trim() }
+        request.descriptionRu?.let { product.descriptionRu = it }
+        request.descriptionEn?.let { product.descriptionEn = it }
+        request.price?.let { product.price = it }
+        request.available?.let { product.available = it }
+        request.weight?.let { product.weight = it }
+
+        val newIsDrink = request.isDrink ?: product.isDrink
+
+        // volume == null в запросе может означать как «не менять», так и «сбросить»
+        // для случая перехода из напитка в обычный товар, поэтому сверяемся с флагом isDrink
+        val newVolume = when {
+            request.volume != null -> request.volume
+            request.isDrink != null && !request.isDrink -> null
+            else -> product.volume
+        }
+
+        validateProductDetails(
+            isDrink = newIsDrink,
+            volume = newVolume
+        )
+
         product.isDrink = newIsDrink
         product.volume = newVolume
 
