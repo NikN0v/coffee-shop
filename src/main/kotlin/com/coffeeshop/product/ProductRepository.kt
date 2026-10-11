@@ -15,4 +15,6 @@ interface ProductRepository : JpaRepository<Product, Long> {
         available: Boolean,
         pageable: Pageable
     ): Page<Product>
+
+    fun findAllByIdInAndAvailableTrue(ids: Collection<Long>): List<Product>
 }
