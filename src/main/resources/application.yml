@@ -1,0 +1,17 @@
+spring.application.name: coffee-shop
+spring.datasource.url: jdbc:postgresql://localhost:5432/coffee_shop
+spring.datasource.username: postgres
+spring.datasource.password: admin
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  security:
+    jwt:
+      secret: ${JWT_SECRET}
+
+server:
+  port: 8080
