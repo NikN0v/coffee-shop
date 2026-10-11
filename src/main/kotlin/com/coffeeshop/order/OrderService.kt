@@ -16,7 +16,8 @@ class OrderService(
     private val orderRepository: OrderRepository,
     private val productRepository: ProductRepository,
     private val userRepository: UserRepository,
-    private val orderItemRepository: OrderItemRepository
+    private val orderItemRepository: OrderItemRepository,
+    private val preparationService: OrderPreparationService
 ) {
 
     @Transactional
@@ -160,4 +161,76 @@ class OrderService(
                 )
             }
         )
+
+    @Transactional
+    fun updateStatus(orderId: Long, newStatus: OrderStatus): OrderResponse {
+        val order = orderRepository.findById(orderId)
+            .orElseThrow {
+                ResponseStatusException(HttpStatus.NOT_FOUND, "Заказ не найден")
+            }
+
+        val allowed = when (order.status) {
+            OrderStatus.CREATED ->
+                setOf(OrderStatus.ACCEPTED, OrderStatus.CANCELLED)
+
+            OrderStatus.ACCEPTED ->
+                setOf(OrderStatus.PREPARING, OrderStatus.CANCELLED)
+
+            OrderStatus.PREPARING ->
+                setOf(OrderStatus.READY, OrderStatus.CANCELLED)
+
+            OrderStatus.READY ->
+                setOf(OrderStatus.PICKED_UP)
+
+            OrderStatus.PICKED_UP,
+            OrderStatus.CANCELLED -> emptySet()
+        }
+
+        if (newStatus !in allowed) {
+            throw ResponseStatusException(
+                HttpStatus.CONFLICT,
+                "Cannot change status from ${order.status} to $newStatus"
+            )
+        }
+
+        order.status = newStatus
+        val saved = orderRepository.save(order)
+
+        if (saved.status == OrderStatus.PREPARING) {
+            preparationService.schedule(saved.id!!)
+        }
+
+        val items = orderItemRepository.findAllByOrderId(saved.id!!)
+
+        return toResponse(saved, items)
+    }
+
+    @Transactional
+    fun cancelMyOrder(userEmail: String, orderId: Long): OrderResponse {
+        val user = userRepository.findByEmail(userEmail)
+            ?: throw ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Пользователь не найден"
+            )
+
+        val order = orderRepository.findByIdAndUserId(orderId, user.id!!)
+            .orElseThrow {
+                ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found")
+            }
+
+        if (order.status != OrderStatus.CREATED) {
+            throw ResponseStatusException(
+                HttpStatus.CONFLICT,
+                "Only newly created orders can be cancelled"
+            )
+        }
+
+        order.status = OrderStatus.CANCELLED
+        val saved = orderRepository.save(order)
+
+        return toResponse(
+            saved,
+            orderItemRepository.findAllByOrderId(saved.id!!)
+        )
+    }
 }

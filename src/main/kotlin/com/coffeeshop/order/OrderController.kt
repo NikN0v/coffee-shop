@@ -2,11 +2,13 @@ package com.coffeeshop.order
 
 import com.coffeeshop.order.dto.OrderCreateRequest
 import com.coffeeshop.order.dto.OrderResponse
+import com.coffeeshop.order.dto.OrderStatusRequest
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.oauth2.jwt.Jwt
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -41,4 +43,18 @@ class OrderController(
         @PathVariable id: Long
     ): OrderResponse =
         orderService.getMyOrder(jwt.subject, id)
+
+    @PatchMapping("/{id}/status")
+    fun updateStatus(
+        @PathVariable id: Long,
+        @Valid @RequestBody request: OrderStatusRequest
+    ): OrderResponse =
+        orderService.updateStatus(id, request.status)
+
+    @PatchMapping("/{id}/cancel")
+    fun cancelMyOrder(
+        @AuthenticationPrincipal jwt: Jwt,
+        @PathVariable id: Long
+    ): OrderResponse =
+        orderService.cancelMyOrder(jwt.subject, id)
 }

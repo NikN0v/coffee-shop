@@ -75,6 +75,8 @@ class SecurityConfig {
         http
             .csrf { it.disable() }
             .authorizeHttpRequests {
+                it.requestMatchers("/ws", "/ws/**").permitAll()
+
                 it.requestMatchers(
                     "/api/auth/register",
                     "/api/auth/login"
@@ -90,8 +92,14 @@ class SecurityConfig {
 
                 it.requestMatchers(
                     HttpMethod.PATCH,
+                    "/api/orders/*/cancel"
+                ).permitAll()
+
+                it.requestMatchers(
+                    HttpMethod.PATCH,
                     "/api/categories/**",
-                    "/api/products/**"
+                    "/api/products/**",
+                    "/api/orders/*/status"
                 ).hasRole("ADMIN")
 
                 it.requestMatchers(
