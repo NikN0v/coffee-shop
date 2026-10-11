@@ -2,6 +2,7 @@ package com.coffeeshop.product
 
 import com.coffeeshop.common.dto.PageResponse
 import com.coffeeshop.product.dto.ProductCreateRequest
+import com.coffeeshop.product.dto.ProductPatchRequest
 import com.coffeeshop.product.dto.ProductResponse
 import com.coffeeshop.product.dto.ProductUpdateRequest
 import com.fasterxml.jackson.databind.JsonNode
@@ -62,6 +63,13 @@ class ProductController(
         @Valid @RequestBody request: ProductUpdateRequest,
         locale: Locale
     ): ProductResponse = productService.update(id, request, locale)
+
+    @PatchMapping("/{id}")
+    fun patch(
+        @PathVariable id: Long,
+        @Valid @RequestBody request: ProductPatchRequest,
+        locale: Locale
+    ): ProductResponse = productService.patch(id, request, locale)
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
