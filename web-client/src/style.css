@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+:root {
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #35251f;
+    background: #faf7f2;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+    min-height: 100%;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+#app {
+    min-height: 100vh;
+}
+
+.locale-select-popper.el-popper {
+    border-radius: 1rem;
+    border: 1px solid #e9dfd3;
+    background: #fdfaf6;
+    box-shadow: 0 8px 24px rgba(166, 107, 69, 0.12);
+    padding: 4px;
+}
+
+.locale-select-popper .el-popper__arrow::before {
+    background: #fdfaf6 !important;
+    border-color: #e9dfd3 !important;
+}
+
+.locale-select-popper .el-select-dropdown__list {
+    padding: 0;
+}
+
+.locale-select-popper .el-select-dropdown__item {
+    display: flex;
+    align-items: center;
+    height: auto;
+    line-height: 1.2;
+    border-radius: 0.75rem;
+    margin: 2px 0;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: #3b2f28;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.locale-select-popper .el-select-dropdown__item:hover,
+.locale-select-popper .el-select-dropdown__item.is-hovering {
+    background: rgba(166, 107, 69, 0.1);
+    color: #a66b45;
+}
+
+.locale-select-popper .el-select-dropdown__item.is-selected {
+    color: #a66b45;
+    font-weight: 600;
+    background: rgba(166, 107, 69, 0.12);
+}
+
+.coffee-notification {
+    border-radius: 14px !important;
+    border-color: #e9dfd3 !important;
+    box-shadow: 0 12px 35px rgb(53 37 31 / 10%) !important;
+}
+
+.coffee-notification .el-notification__title {
+    color: #35251f;
+    font-weight: 700;
+}
+
+.coffee-notification .el-notification__content {
+    color: #78675c;
+    line-height: 1.5;
+}
+
+.el-select__popper.el-popper {
+    padding: 6px !important;
+    border: 1px solid #e9dfd3 !important;
+    border-radius: 14px !important;
+    background-color: #fffdf9 !important;
+    box-shadow: 0 12px 35px rgb(53 37 31 / 12%) !important;
+}
+
+/* Убираем стандартную стрелку-подсказку Popper */
+.el-select__popper .el-popper__arrow::before {
+    border-color: #e9dfd3 !important;
+    background-color: #fffdf9 !important;
+}
+
+/* Список опций */
+.el-select-dropdown__list {
+    padding: 0 !important;
+}
+
+/* Элемент списка */
+.el-select-dropdown__item {
+    min-height: 40px;
+    padding: 0 12px;
+    border-radius: 9px;
+    color: #59483d;
+    transition: color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.el-select-dropdown__item:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+/* Наведение */
+.el-select-dropdown__item.hover,
+.el-select-dropdown__item:hover {
+    background-color: #f5eee6 !important;
+    color: #593a2b !important;
+}
+
+/* Выбранный элемент */
+.el-select-dropdown__item.is-selected {
+    background-color: #eee1d4 !important;
+    color: #593a2b !important;
+    font-weight: 600;
+}
+
+/* Отключённый элемент */
+.el-select-dropdown__item.is-disabled {
+    background-color: transparent !important;
+    color: #c2b7ad !important;
+    cursor: not-allowed;
+}
+
+/* Текст без результатов поиска */
+.el-select-dropdown__empty {
+    padding: 16px;
+    color: #a59689;
+}
+
+/* ===== Admin dropdown ===== */
+
+.admin-menu-button {
+    --el-button-bg-color: #fffaf4;
+    --el-button-border-color: #e5d5c4;
+    --el-button-text-color: #593a2b;
+    --el-button-hover-bg-color: #f3e8dc;
+    --el-button-hover-border-color: #c9a98e;
+    --el-button-hover-text-color: #422719;
+    --el-button-active-bg-color: #ead9c7;
+    --el-button-active-border-color: #c9a98e;
+
+    display: inline-flex;
+    align-items: center;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-weight: 600;
+    transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.admin-menu-button:hover {
+    box-shadow: 0 3px 10px rgb(89 58 43 / 8%);
+}
+
+/* Выпадающая панель */
+.el-dropdown__popper.admin-dropdown-popper,
+.el-popper.admin-dropdown-popper {
+    --el-bg-color-overlay: #fffaf4;
+    --el-border-color-light: #eadfd2;
+    --el-text-color-regular: #593a2b;
+
+    padding: 6px;
+    border: 1px solid #eadfd2;
+    border-radius: 14px;
+    background: #fffaf4;
+    box-shadow: 0 10px 30px rgb(66 39 25 / 12%);
+}
+
+/* Список */
+.admin-dropdown-popper .el-dropdown-menu {
+    padding: 0;
+    background: transparent;
+}
+
+/* Пункты меню */
+.admin-dropdown-popper .el-dropdown-menu__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 42px;
+    margin: 3px 0;
+    padding: 0 12px;
+    border-radius: 9px;
+    color: #593a2b;
+    font-size: 14px;
+    font-weight: 500;
+    transition:
+            background-color 0.18s ease,
+            color 0.18s ease;
+}
+
+.admin-dropdown-popper .el-dropdown-menu__item:not(.is-disabled):hover,
+.admin-dropdown-popper .el-dropdown-menu__item:not(.is-disabled):focus {
+    background: #f3e8dc;
+    color: #422719;
+}
+
+/* Отключённые пункты */
+.admin-dropdown-popper .el-dropdown-menu__item.is-disabled {
+    color: #b8a99b;
+    cursor: not-allowed;
+    background: transparent;
+}
+
+/* Стрелка панели */
+.admin-dropdown-popper .el-popper__arrow::before {
+    border-color: #eadfd2;
+    background: #fffaf4;
+}
+
+/* Убираем синюю подсветку кнопки dropdown */
+.admin-menu-button,
+.admin-menu-button:focus,
+.admin-menu-button:focus-visible {
+    color: #593a2b !important;
+    background-color: #fffaf4 !important;
+    border-color: #e5d5c4 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.admin-menu-button:hover,
+.admin-menu-button:active,
+.admin-menu-button:focus:hover {
+    color: #422719 !important;
+    background-color: #f3e8dc !important;
+    border-color: #c9a98e !important;
+}
+
+/* Цвет иконок внутри кнопки */
+.admin-menu-button .el-icon {
+    color: inherit !important;
+}
+
+/* Убираем синюю подсветку пунктов меню */
+.admin-dropdown-popper .el-dropdown-menu__item:not(.is-disabled):hover,
+.admin-dropdown-popper .el-dropdown-menu__item:not(.is-disabled):focus {
+    color: #422719 !important;
+    background-color: #f3e8dc !important;
+    outline: none !important;
+}

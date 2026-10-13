@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Client } from "@stomp/stompjs";
+import {Client} from "@stomp/stompjs";
+import MainLayout from "@/layouts/MainLayout.vue";
+import AuthLayout from "@/layouts/AuthLayout.vue";
 
 let accessToken
 
@@ -23,11 +25,9 @@ client.activate()
 </script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <RouterView v-slot="{ Component, route }">
+    <component :is="route.meta.layout === 'auth' ? AuthLayout : MainLayout">
+      <component :is="Component"/>
+    </component>
+  </RouterView>
 </template>
-
-<style scoped></style>

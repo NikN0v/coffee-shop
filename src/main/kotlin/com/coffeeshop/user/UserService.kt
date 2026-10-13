@@ -29,7 +29,8 @@ class UserService(
         val user = User(
             email = email,
             passwordHash = requireNotNull(passwordEncoder.encode(request.password)),
-            role = UserRole.USER
+            role = UserRole.USER,
+            name = request.name.trim()
         )
 
         val saved = userRepository.save(user)
@@ -37,7 +38,8 @@ class UserService(
         return UserResponse(
             id = requireNotNull(saved.id),
             email = saved.email,
-            role = saved.role.name
+            role = saved.role.name,
+            name = saved.name
         )
     }
 
@@ -61,7 +63,8 @@ class UserService(
         return UserResponse(
             id = requireNotNull(user.id),
             email = user.email,
-            role = user.role.name
+            role = user.role.name,
+            name = user.name
         )
     }
 }

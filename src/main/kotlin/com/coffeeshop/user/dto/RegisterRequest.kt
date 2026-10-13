@@ -17,5 +17,9 @@ data class RegisterRequest(
         max = 72,
         message = "Пароль должен содержать от 8 до 72 символов"
     )
-    val password: String
+    val password: String,
+
+    @field:NotBlank(message = "Имя обязательно")
+    @field:Size(max = 100)
+    val name: String
 )

@@ -39,5 +39,8 @@ class User(
         insertable = false,
         updatable = false
     )
-    var createdAt: Instant? = null
+    var createdAt: Instant? = null,
+
+    @Column(nullable = false, length = 100)
+    var name: String
 )

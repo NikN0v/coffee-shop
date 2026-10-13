@@ -2,6 +2,8 @@ package com.coffeeshop.category
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
@@ -20,4 +22,8 @@ class Category(
 
     @Column(name = "name_en", nullable = false, length = 100)
     var nameEn: String,
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false, length = 30)
+    var type: CategoryType = CategoryType.OTHER
 )

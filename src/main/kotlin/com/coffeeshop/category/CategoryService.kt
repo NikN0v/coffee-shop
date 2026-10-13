@@ -22,7 +22,10 @@ class CategoryService(private val categoryRepository: CategoryRepository) {
                     category.nameEn
                 } else {
                     category.nameRu
-                }
+                },
+                type = category.type,
+                nameRu = category.nameRu,
+                nameEn = category.nameEn
             )
         }
     }
@@ -31,14 +34,18 @@ class CategoryService(private val categoryRepository: CategoryRepository) {
     fun create(request: CategoryCreateRequest): CategoryResponse {
         val category = Category(
             nameRu = request.nameRu.trim(),
-            nameEn = request.nameEn.trim()
+            nameEn = request.nameEn.trim(),
+            type = request.type
         )
 
         val saved = categoryRepository.save(category)
 
         return CategoryResponse(
             id = requireNotNull(saved.id),
-            name = saved.nameRu
+            name = saved.nameRu,
+            type = saved.type,
+            nameRu = saved.nameRu,
+            nameEn = saved.nameEn
         )
     }
 
@@ -54,6 +61,7 @@ class CategoryService(private val categoryRepository: CategoryRepository) {
 
         category.nameRu = request.nameRu.trim()
         category.nameEn = request.nameEn.trim()
+        category.type = request.type
 
         val saved = categoryRepository.save(category)
 
@@ -63,7 +71,10 @@ class CategoryService(private val categoryRepository: CategoryRepository) {
                 saved.nameRu
             } else {
                 saved.nameEn
-            }
+            },
+            type = saved.type,
+            nameRu = saved.nameRu,
+            nameEn = saved.nameEn
         )
     }
 

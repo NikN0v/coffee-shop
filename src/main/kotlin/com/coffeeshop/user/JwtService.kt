@@ -26,6 +26,7 @@ class JwtService(
             .subject(user.email)
             .claim("userId", user.id)
             .claim("roles", listOf(user.role))
+            .claim("name", user.name)
             .build()
 
         val header = JwsHeader.with(MacAlgorithm.HS256).build()
