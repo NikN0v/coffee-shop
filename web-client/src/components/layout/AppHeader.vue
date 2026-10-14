@@ -110,7 +110,7 @@ function logout(): void {
             <el-dropdown-item command="/admin/categories">
               {{ t('nav.category') }}
             </el-dropdown-item>
-            <el-dropdown-item command="/admin/products" disabled>
+            <el-dropdown-item command="/admin/products">
               {{ t('nav.product') }}
             </el-dropdown-item>
             <el-dropdown-item command="/admin/orders" disabled>

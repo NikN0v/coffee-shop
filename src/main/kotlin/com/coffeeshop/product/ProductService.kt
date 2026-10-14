@@ -162,7 +162,11 @@ class ProductService(
         available = available,
         weight = weight,
         isDrink = isDrink,
-        volume = volume
+        volume = volume,
+        nameRu = nameRu,
+        nameEn = nameEn,
+        descriptionRu = descriptionRu,
+        descriptionEn = descriptionEn
     )
 
     private fun validateProductDetails(

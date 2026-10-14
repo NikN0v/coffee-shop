@@ -272,3 +272,707 @@ button {
     background-color: #f3e8dc !important;
     outline: none !important;
 }
+
+/* =========================================
+   Coffee UI — shared form controls
+   ========================================= */
+
+:root {
+    --coffee-bg: #fffaf4;
+    --coffee-bg-hover: #f7eee4;
+    --coffee-border: #e5d5c4;
+    --coffee-border-hover: #c9a98e;
+    --coffee-text: #593a2b;
+    --coffee-text-dark: #422719;
+    --coffee-text-muted: #9a8574;
+    --coffee-accent: #79513a;
+    --coffee-accent-hover: #64402e;
+    --coffee-disabled-bg: #f3eee8;
+    --coffee-disabled-text: #b8a99b;
+    --coffee-focus-ring: rgb(121 81 58 / 14%);
+}
+
+/* Textarea */
+.ui-textarea {
+    width: 100%;
+}
+
+.ui-textarea .el-textarea__inner {
+    box-sizing: border-box;
+    min-height: 100px;
+    padding: 12px 14px;
+    border: 1px solid var(--coffee-border);
+    border-radius: 12px;
+    background-color: var(--coffee-bg);
+    box-shadow: none;
+    color: var(--coffee-text);
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    transition:
+            border-color 0.2s ease,
+            background-color 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.ui-textarea .el-textarea__inner::placeholder {
+    color: var(--coffee-text-muted);
+}
+
+.ui-textarea .el-textarea__inner:hover {
+    border-color: var(--coffee-border-hover);
+}
+
+.ui-textarea .el-textarea__inner:focus {
+    border-color: var(--coffee-accent);
+    background-color: #fffdf9;
+    box-shadow: 0 0 0 3px var(--coffee-focus-ring);
+}
+
+.ui-textarea .el-textarea__inner:disabled {
+    border-color: var(--coffee-border);
+    background-color: var(--coffee-disabled-bg);
+    color: var(--coffee-disabled-text);
+    cursor: not-allowed;
+}
+
+.ui-textarea .el-input__count {
+    background: transparent;
+    color: var(--coffee-text-muted);
+    font-size: 12px;
+}
+
+/* Number */
+.ui-number {
+    width: 100%;
+}
+
+.ui-number .el-input {
+    width: 100%;
+    height: 44px;
+}
+
+.ui-number .el-input__wrapper {
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--coffee-border);
+    border-radius: 12px;
+    background-color: var(--coffee-bg);
+    box-shadow: none;
+    transition:
+            border-color 0.2s ease,
+            background-color 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.ui-number .el-input__wrapper:hover {
+    border-color: var(--coffee-border-hover);
+}
+
+.ui-number .el-input__wrapper.is-focus {
+    border-color: var(--coffee-accent);
+    background-color: #fffdf9;
+    box-shadow: 0 0 0 3px var(--coffee-focus-ring);
+}
+
+.ui-number .el-input__inner {
+    color: var(--coffee-text);
+    font-size: 14px;
+    text-align: left;
+}
+
+.ui-number .el-input__inner::placeholder {
+    color: var(--coffee-text-muted);
+}
+
+.ui-number .el-input.is-disabled .el-input__wrapper {
+    background-color: var(--coffee-disabled-bg);
+    cursor: not-allowed;
+}
+
+.ui-number .el-input.is-disabled .el-input__inner {
+    color: var(--coffee-disabled-text);
+}
+
+.ui-number .el-input-number__decrease,
+.ui-number .el-input-number__increase {
+    border-color: var(--coffee-border);
+    background-color: var(--coffee-bg-hover);
+    color: var(--coffee-text);
+}
+
+.ui-number .el-input-number__decrease:hover,
+.ui-number .el-input-number__increase:hover {
+    color: var(--coffee-accent);
+}
+
+/* Switch */
+.ui-switch {
+    --el-switch-on-color: var(--coffee-accent);
+    --el-switch-off-color: #d8c9b9;
+    --el-switch-border-color: transparent;
+}
+
+.ui-switch .el-switch__core {
+    min-width: 42px;
+    height: 24px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease;
+}
+
+.ui-switch .el-switch__action {
+    width: 18px;
+    height: 18px;
+    background-color: #fffaf4;
+    box-shadow: 0 1px 3px rgb(66 39 25 / 18%);
+}
+
+.ui-switch .el-switch__label {
+    color: var(--coffee-text-muted);
+    font-size: 13px;
+}
+
+.ui-switch .el-switch__label.is-active {
+    color: var(--coffee-text);
+}
+
+.ui-switch:focus-visible {
+    outline: 3px solid var(--coffee-focus-ring);
+    outline-offset: 3px;
+}
+
+/* Checkbox */
+.ui-checkbox {
+    --el-checkbox-checked-bg-color: var(--coffee-accent);
+    --el-checkbox-checked-input-border-color: var(--coffee-accent);
+    --el-checkbox-input-border-color: var(--coffee-border-hover);
+    --el-checkbox-input-bg-color: var(--coffee-bg);
+    --el-checkbox-checked-text-color: var(--coffee-text);
+    --el-checkbox-textr: var(--coffee-text);
+    --el-checkbox-input-border-radius: 5px;
+
+    color: var(--coffee-text);
+    font-size: 14px;
+}
+
+.ui-checkbox .el-checkbox__inner {
+    width: 17px;
+    height: 17px;
+    border-radius: 5px;
+    transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease;
+}
+
+.ui-checkbox .el-checkbox__inner:hover {
+    border-color: var(--coffee-accent);
+}
+
+.ui-checkbox .el-checkbox__label {
+    padding-left: 9px;
+    color: var(--coffee-text);
+    font-size: 14px;
+}
+
+.ui-checkbox .el-checkbox__input.is-checked .el-checkbox__inner {
+    border-color: var(--coffee-accent);
+    background-color: var(--coffee-accent);
+}
+
+.ui-checkbox .el-checkbox__input.is-checked + .el-checkbox__label {
+    color: var(--coffee-text-dark);
+}
+
+.ui-checkbox .el-checkbox__input.is-disabled .el-checkbox__inner {
+    border-color: var(--coffee-border);
+    background-color: var(--coffee-disabled-bg);
+}
+
+.ui-checkbox .el-checkbox__input.is-disabled + .el-checkbox__label {
+    color: var(--coffee-disabled-text);
+}
+
+/* Consistent keyboard focus */
+.ui-textarea .el-textarea__inner:focus-visible,
+.ui-number .el-input__wrapper:focus-within {
+    outline: none;
+}
+
+/* ================================
+   INPUT
+================================ */
+
+.coffee-input {
+    width: 100%;
+}
+
+.coffee-input .el-input__wrapper {
+    min-height: 44px;
+    padding: 0 14px;
+    border-radius: 12px;
+    background: var(--coffee-bg);
+    box-shadow: 0 0 0 1px var(--coffee-border) inset;
+    transition:
+            box-shadow 0.2s ease,
+            background-color 0.2s ease;
+}
+
+.coffee-input .el-input__wrapper:hover {
+    box-shadow: 0 0 0 1px var(--coffee-border-hover) inset;
+}
+
+.coffee-input .el-input__wrapper.is-focus {
+    background: #fff;
+    box-shadow:
+            0 0 0 1px var(--coffee-accent) inset,
+            0 0 0 3px var(--coffee-focus-ring);
+}
+
+.coffee-input .el-input__inner {
+    color: var(--coffee-text-dark);
+    font-size: 14px;
+}
+
+.coffee-input .el-input__inner::placeholder {
+    color: var(--coffee-text-muted);
+}
+
+.coffee-input .el-input__wrapper.is-disabled {
+    background: var(--coffee-disabled-bg);
+    box-shadow: 0 0 0 1px var(--coffee-border) inset;
+}
+
+.coffee-input .el-input__wrapper.is-disabled .el-input__inner {
+    color: var(--coffee-disabled-text);
+    -webkit-text-fill-color: var(--coffee-disabled-text);
+}
+
+.coffee-input .el-input__count {
+    background: transparent;
+    color: var(--coffee-text-muted);
+}
+
+/* ================================
+   SELECT
+================================ */
+
+.coffee-select {
+    width: 100%;
+}
+
+.coffee-select .el-select__wrapper {
+    min-height: 44px;
+    padding: 4px 14px;
+    border-radius: 12px;
+    background: var(--coffee-bg);
+    box-shadow: 0 0 0 1px var(--coffee-border) inset;
+    transition:
+            box-shadow 0.2s ease,
+            background-color 0.2s ease;
+}
+
+.coffee-select .el-select__wrapper:hover {
+    box-shadow: 0 0 0 1px var(--coffee-border-hover) inset;
+}
+
+.coffee-select .el-select__wrapper.is-focused {
+    background: #fff;
+    box-shadow:
+            0 0 0 1px var(--coffee-accent) inset,
+            0 0 0 3px var(--coffee-focus-ring);
+}
+
+.coffee-select .el-select__placeholder {
+    color: var(--coffee-text-muted);
+}
+
+.coffee-select .el-select__selected-item,
+.coffee-select .el-select__input-wrapper,
+.coffee-select .el-select__input {
+    color: var(--coffee-text-dark);
+    font-size: 14px;
+}
+
+.coffee-select .el-select__wrapper.is-disabled {
+    background: var(--coffee-disabled-bg);
+    box-shadow: 0 0 0 1px var(--coffee-border) inset;
+}
+
+.coffee-select .el-select__wrapper.is-disabled .el-select__placeholder,
+.coffee-select .el-select__wrapper.is-disabled .el-select__selected-item {
+    color: var(--coffee-disabled-text);
+}
+
+.coffee-select .el-select__tags .el-tag {
+    border: 1px solid var(--coffee-border);
+    border-radius: 8px;
+    background: var(--coffee-bg-hover);
+    color: var(--coffee-text);
+}
+
+/* ================================
+   SELECT DROPDOWN
+================================ */
+
+.el-select__popper.el-popper {
+    overflow: hidden;
+    border: 1px solid var(--coffee-border);
+    border-radius: 12px;
+    background: var(--coffee-bg);
+    box-shadow: 0 8px 24px rgb(66 39 25 / 10%);
+}
+
+.el-select__popper .el-select-dropdown {
+    background: var(--coffee-bg);
+}
+
+.el-select__popper .el-select-dropdown__item {
+    min-height: 38px;
+    padding: 0 14px;
+    color: var(--coffee-text);
+    transition: background-color 0.15s ease;
+}
+
+.el-select__popper .el-select-dropdown__item.hover,
+.el-select__popper .el-select-dropdown__item:hover {
+    background: var(--coffee-bg-hover);
+}
+
+.el-select__popper .el-select-dropdown__item.is-selected {
+    color: var(--coffee-accent);
+    font-weight: 600;
+}
+
+.el-select__popper .el-select-dropdown__item.is-disabled {
+    color: var(--coffee-disabled-text);
+    cursor: not-allowed;
+}
+
+/* ================================
+   BUTTON
+================================ */
+
+.coffee-button.el-button {
+    min-height: 42px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease,
+            box-shadow 0.2s ease,
+            transform 0.15s ease;
+}
+
+.coffee-button--block {
+    width: 100%;
+}
+
+/* Primary — кофейная кнопка */
+
+.coffee-button.el-button--primary {
+    border-color: var(--coffee-accent);
+    background: var(--coffee-accent);
+    color: #fffaf4;
+}
+
+.coffee-button.el-button--primary:hover,
+.coffee-button.el-button--primary:focus-visible {
+    border-color: var(--coffee-accent-hover);
+    background: var(--coffee-accent-hover);
+    color: #fffaf4;
+}
+
+.coffee-button.el-button--primary:active {
+    border-color: var(--coffee-text-dark);
+    background: var(--coffee-text-dark);
+    transform: translateY(1px);
+}
+
+/* Default — светлая кнопка */
+
+.coffee-button.el-button--default {
+    border: 1px solid var(--coffee-border);
+    background: var(--coffee-bg);
+    color: var(--coffee-text);
+    box-shadow: none;
+}
+
+.coffee-button.el-button--default:hover,
+.coffee-button.el-button--default:focus-visible {
+    border-color: var(--coffee-border-hover);
+    background: var(--coffee-bg-hover);
+    color: var(--coffee-text-dark);
+}
+
+.coffee-button.el-button--default:active {
+    border-color: var(--coffee-accent);
+    background: #f0e4d8;
+    color: var(--coffee-text-dark);
+    transform: translateY(1px);
+}
+
+/* Disabled — общий вид */
+
+.coffee-button.el-button.is-disabled,
+.coffee-button.el-button.is-disabled:hover,
+.coffee-button.el-button.is-disabled:focus,
+.coffee-button.el-button.is-disabled:active {
+    border-color: var(--coffee-border);
+    background: var(--coffee-disabled-bg);
+    color: var(--coffee-disabled-text);
+    box-shadow: none;
+    transform: none;
+    cursor: not-allowed;
+}
+
+/* Loading */
+
+.coffee-button.el-button.is-loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Keyboard focus */
+
+.coffee-button.el-button:focus-visible {
+    outline: 3px solid var(--coffee-focus-ring);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   TABLE — Coffee Theme
+======================================== */
+
+.el-table {
+    --el-table-border-color: var(--coffee-border);
+    --el-table-header-bg-color: var(--coffee-bg-hover);
+    --el-table-tr-bg-color: var(--coffee-bg);
+    --el-table-row-hover-bg-color: #f7eee4;
+    --el-table-current-row-bg-color: #f0e4d8;
+    --el-table-text-color: var(--coffee-text);
+    --el-table-header-text-color: var(--coffee-text-dark);
+    --el-table-bg-color: var(--coffee-bg);
+    --el-fill-color-lighter: var(--coffee-bg-hover);
+
+    width: 100%;
+    overflow: hidden;
+    border-radius: 14px;
+    background: var(--coffee-bg);
+    font-size: 14px;
+}
+
+/* Header */
+
+.el-table th.el-table__cell {
+    background: var(--coffee-bg-hover);
+    color: var(--coffee-text-dark);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.el-table th.el-table__cell .cell {
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+
+/* Body */
+
+.el-table td.el-table__cell {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: background-color 0.15s ease;
+}
+
+.el-table .cell {
+    padding-right: 14px;
+    padding-left: 14px;
+    overflow-wrap: anywhere;
+}
+
+/* Hover */
+
+.el-table__body tr:hover > td.el-table__cell {
+    background: var(--coffee-bg-hover) !important;
+}
+
+/* Borders */
+
+.el-table--border::before,
+.el-table--border::after,
+.el-table__inner-wrapper::before {
+    background-color: var(--coffee-border);
+}
+
+.el-table--border .el-table__cell {
+    border-right-color: var(--coffee-border);
+}
+
+/* Empty state */
+
+.el-table__empty-block {
+    min-height: 140px;
+    background: var(--coffee-bg);
+}
+
+.el-table__empty-text {
+    color: var(--coffee-text-muted);
+    font-size: 14px;
+}
+
+/* Sort icons */
+
+.el-table .sort-caret {
+    border-bottom-color: var(--coffee-text-muted);
+    border-top-color: var(--coffee-text-muted);
+}
+
+.el-table .ascending .sort-caret.ascending {
+    border-bottom-color: var(--coffee-accent);
+}
+
+.el-table .descending .sort-caret.descending {
+    border-top-color: var(--coffee-accent);
+}
+
+/* Fixed columns */
+
+.el-table__fixed,
+.el-table__fixed-right {
+    background: var(--coffee-bg);
+}
+
+.el-table__fixed-right-patch {
+    background: var(--coffee-bg-hover);
+}
+
+/* Loading overlay */
+
+.el-table__inner-wrapper .el-loading-mask {
+    background-color: rgb(255 250 244 / 75%);
+}
+
+/* ========================================
+   PAGINATION — Coffee Theme
+======================================== */
+
+.el-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 12px 0;
+
+    --el-pagination-bg-color: var(--coffee-bg);
+    --el-pagination-text-color: var(--coffee-text);
+    --el-pagination-button-color: var(--coffee-text);
+    --el-pagination-button-bg-color: var(--coffee-bg);
+    --el-pagination-hover-color: var(--coffee-accent);
+    --el-pagination-button-disabled-color: var(--coffee-disabled-text);
+    --el-pagination-button-disabled-bg-color: var(--coffee-disabled-bg);
+    --el-pagination-font-size: 14px;
+}
+
+/* Page buttons */
+
+.el-pagination .btn-prev,
+.el-pagination .btn-next,
+.el-pagination .el-pager li {
+    min-width: 34px;
+    height: 34px;
+    margin: 0;
+    border: 1px solid var(--coffee-border);
+    border-radius: 9px;
+    background: var(--coffee-bg);
+    color: var(--coffee-text);
+    transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease;
+}
+
+.el-pagination .btn-prev,
+.el-pagination .btn-next {
+    padding: 0 8px;
+}
+
+/* Hover */
+
+.el-pagination .btn-prev:hover:not(:disabled),
+.el-pagination .btn-next:hover:not(:disabled),
+.el-pagination .el-pager li:hover {
+    border-color: var(--coffee-border-hover);
+    background: var(--coffee-bg-hover);
+    color: var(--coffee-accent);
+}
+
+/* Active page */
+
+.el-pagination .el-pager li.is-active {
+    border-color: var(--coffee-accent);
+    background: var(--coffee-accent);
+    color: #fffaf4;
+    font-weight: 600;
+}
+
+.el-pagination .el-pager li.is-active:hover {
+    color: #fffaf4;
+}
+
+/* Disabled */
+
+.el-pagination button:disabled,
+.el-pagination .btn-prev:disabled,
+.el-pagination .btn-next:disabled {
+    border-color: var(--coffee-border);
+    background: var(--coffee-disabled-bg);
+    color: var(--coffee-disabled-text);
+    cursor: not-allowed;
+}
+
+/* Total text */
+
+.el-pagination .el-pagination__total {
+    margin-right: 8px;
+    color: var(--coffee-text-muted);
+    font-size: 13px;
+}
+
+/* Page size select */
+
+.el-pagination .el-select {
+    width: 110px;
+}
+
+.el-pagination .el-select .el-select__wrapper {
+    min-height: 34px;
+    border-radius: 9px;
+    background: var(--coffee-bg);
+    box-shadow: 0 0 0 1px var(--coffee-border) inset;
+}
+
+.el-pagination .el-select .el-select__wrapper:hover {
+    box-shadow: 0 0 0 1px var(--coffee-border-hover) inset;
+}
+
+/* Jumper */
+
+.el-pagination .el-pagination__jump {
+    color: var(--coffee-text-muted);
+    font-size: 13px;
+}
+
+.el-pagination .el-pagination__editor.el-input {
+    width: 56px;
+}
+
+.el-pagination .el-pagination__editor.el-input .el-input__wrapper {
+    min-height: 34px;
+    border-radius: 9px;
+}

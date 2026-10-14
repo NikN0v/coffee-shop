@@ -177,18 +177,18 @@ onMounted(loadCategories)
         <el-table-column :label="t('categories.actions')" width="150" fixed="right">
           <template #default="{ row }">
             <div class="flex items-center gap-2">
-              <el-button circle plain aria-label="Редактировать категорию" :disabled="categoryStore.isSaving"
-                         @click="openEditDialog(row)">
+              <UiButton type="default" circle plain aria-label="Редактировать категорию" :disabled="categoryStore.isSaving"
+                        @click="openEditDialog(row)">
                 <el-icon>
                   <Edit/>
                 </el-icon>
-              </el-button>
-              <el-button circle plain type="danger" aria-label="Удалить категорию" :disabled="categoryStore.isSaving"
-                         @click="removeCategory(row)">
+              </UiButton>
+              <UiButton circle plain type="danger" aria-label="Удалить категорию" :disabled="categoryStore.isSaving"
+                        @click="removeCategory(row)">
                 <el-icon>
                   <Delete/>
                 </el-icon>
-              </el-button>
+              </UiButton>
             </div>
           </template>
         </el-table-column>

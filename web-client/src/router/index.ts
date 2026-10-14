@@ -42,6 +42,12 @@ const routes: RouteRecordRaw[] = [
         meta: { layout: 'main', requiresAuth: true, adminOnly: true }
     },
     {
+      path: '/admin/products',
+      name: 'admin-products',
+      component: () => import('@/views/AdminProductsView.vue'),
+      meta: { layout: 'main', requiresAuth: true, adminOnly: true }
+    },
+    {
         path: '/:pathMatch(.*)*',
         name: 'not-found',
         component: () => import('@/views/NotFound.vue'),

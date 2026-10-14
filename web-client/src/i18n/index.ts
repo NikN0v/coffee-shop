@@ -1,7 +1,13 @@
-import { createI18n } from 'vue-i18n'
+import {createI18n} from 'vue-i18n'
 
 const messages = {
     ru: {
+        common: {
+            save: 'Сохранить',
+            cancel: 'Отмена',
+            success: 'Успешно',
+            warning: 'Внимание'
+        },
         nav: {
             home: 'Главная',
             menu: 'Меню',
@@ -78,6 +84,67 @@ const messages = {
         },
         products: {
             coffee: 'Кофе',
+            title: 'Товары',
+            subtitle: 'Управление ассортиментом кофейни',
+            add: 'Добавить товар',
+            edit: 'Редактировать',
+            delete: 'Удалить',
+            createTitle: 'Новый товар',
+            editTitle: 'Редактирование товара',
+            deleteTitle: 'Удаление товара',
+            confirmDelete: 'Удалить товар «{name}»?',
+            available: 'Доступен',
+            unavailable: 'Недоступен',
+            fields: {
+                name: 'Название',
+                nameRu: 'Название на русском',
+                nameEn: 'Название на английском',
+                descriptionRu: 'Описание на русском',
+                descriptionEn: 'Описание на английском',
+                category: 'Категория',
+                price: 'Цена',
+                availability: 'Доступность',
+                available: 'Доступен для заказа',
+                isDrink: 'Это напиток',
+                weight: 'Вес (г)',
+                volume: 'Объём (мл)',
+                details: 'Вес / объём',
+                actions: 'Действия',
+            },
+            filters: {
+                all: 'Все',
+                category: 'Все категории',
+                availability: 'Доступность',
+            },
+            form: {
+                selectCategory: 'Выберите категорию',
+                optional: 'Необязательно',
+                volume: 'Укажите объём',
+            },
+            units: {
+                ml: 'мл',
+                g: 'г',
+            },
+            validation: {
+                category: 'Выберите категорию',
+                nameRu: 'Введите название на русском',
+                nameEn: 'Введите название на английском',
+                nameLength: 'Максимум 150 символов',
+                price: 'Цена должна быть больше нуля',
+                volume: 'Для напитка укажите объём не менее 1 мл',
+            },
+            messages: {
+                created: 'Товар создан',
+                updated: 'Товар обновлён',
+                deleted: 'Товар удалён',
+            },
+            errors: {
+                load: 'Не удалось загрузить товары',
+                loadOne: 'Не удалось загрузить данные товара',
+                create: 'Не удалось создать товар',
+                update: 'Не удалось обновить товар',
+                delete: 'Не удалось удалить товар',
+            },
         },
         admin: {
             title: 'Панель администратора',
@@ -126,6 +193,12 @@ const messages = {
         },
     },
     en: {
+        common: {
+            save: 'Save',
+            cancel: 'Cancel',
+            success: 'Success',
+            warning: 'Warning'
+        },
         nav: {
             home: 'Home',
             menu: 'Menu',
@@ -202,6 +275,67 @@ const messages = {
         },
         products: {
             coffee: 'Coffee',
+            title: 'Products',
+            subtitle: 'Manage the coffee shop catalog',
+            add: 'Add product',
+            edit: 'Edit',
+            delete: 'Delete',
+            createTitle: 'New product',
+            editTitle: 'Edit product',
+            deleteTitle: 'Delete product',
+            confirmDelete: 'Delete product "{name}"?',
+            available: 'Available',
+            unavailable: 'Unavailable',
+            fields: {
+                name: 'Name',
+                nameRu: 'Name in Russian',
+                nameEn: 'Name in English',
+                descriptionRu: 'Description in Russian',
+                descriptionEn: 'Description in English',
+                category: 'Category',
+                price: 'Price',
+                availability: 'Availability',
+                available: 'Available for ordering',
+                isDrink: 'This is a drink',
+                weight: 'Weight (g)',
+                volume: 'Volume (ml)',
+                details: 'Weight / volume',
+                actions: 'Actions',
+            },
+            filters: {
+                all: 'All',
+                category: 'All categories',
+                availability: 'Availability',
+            },
+            form: {
+                selectCategory: 'Select a category',
+                optional: 'Optional',
+                volume: 'Enter volume',
+            },
+            units: {
+                ml: 'ml',
+                g: 'g',
+            },
+            validation: {
+                category: 'Select a category',
+                nameRu: 'Enter the Russian name',
+                nameEn: 'Enter the English name',
+                nameLength: 'Maximum 150 characters',
+                price: 'Price must be greater than zero',
+                volume: 'Enter a volume of at least 1 ml for drinks',
+            },
+            messages: {
+                created: 'Product created',
+                updated: 'Product updated',
+                deleted: 'Product deleted',
+            },
+            errors: {
+                load: 'Failed to load products',
+                loadOne: 'Failed to load product details',
+                create: 'Failed to create product',
+                update: 'Failed to update product',
+                delete: 'Failed to delete product',
+            },
         },
         admin: {
             title: 'Admin dashboard',
