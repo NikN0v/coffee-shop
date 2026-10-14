@@ -2,6 +2,23 @@ import {createI18n} from 'vue-i18n'
 
 const messages = {
     ru: {
+        menu: {
+            eyebrow: 'Наша кофейня',
+            title: 'Кофе и десерты с заботой',
+            description:
+                'Выбирайте любимые напитки, свежую выпечку и десерты. Всё, чтобы сделать ваш день немного теплее.',
+            catalogTitle: 'Наше меню',
+            catalogSubtitle: 'Выберите то, что вам по вкусу',
+            categories: 'Категории товаров',
+            allProducts: 'Все товары',
+            available: 'В наличии',
+            empty: 'В этой категории пока нет доступных товаров',
+            ml: 'мл',
+            g: 'г',
+            productCount: 'Товаров: {count}',
+            loadProductsError: 'Не удалось загрузить товары. Попробуйте ещё раз.',
+            loadCategoriesError: 'Не удалось загрузить категории.',
+        },
         common: {
             save: 'Сохранить',
             cancel: 'Отмена',
@@ -193,6 +210,23 @@ const messages = {
         },
     },
     en: {
+        menu: {
+            eyebrow: 'Our coffee shop',
+            title: 'Coffee and desserts, made with care',
+            description:
+                'Choose your favourite drinks, fresh pastries and desserts. A little something to make your day warmer.',
+            catalogTitle: 'Our menu',
+            catalogSubtitle: 'Find something you love',
+            categories: 'Product categories',
+            allProducts: 'All products',
+            available: 'Available',
+            empty: 'There are no available products in this category yet',
+            ml: 'ml',
+            g: 'g',
+            productCount: 'Products: {count}',
+            loadProductsError: 'Could not load products. Please try again.',
+            loadCategoriesError: 'Could not load categories.',
+        },
         common: {
             save: 'Save',
             cancel: 'Cancel',

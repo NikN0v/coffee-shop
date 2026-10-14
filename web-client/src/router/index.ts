@@ -48,6 +48,12 @@ const routes: RouteRecordRaw[] = [
       meta: { layout: 'main', requiresAuth: true, adminOnly: true }
     },
     {
+      path: '/menu',
+      name: 'menu',
+      component: () => import('@/views/MenuView.vue'),
+      meta: { layout: 'main' }
+    },
+    {
         path: '/:pathMatch(.*)*',
         name: 'not-found',
         component: () => import('@/views/NotFound.vue'),

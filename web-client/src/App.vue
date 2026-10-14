@@ -3,12 +3,12 @@ import {Client} from "@stomp/stompjs";
 import MainLayout from "@/layouts/MainLayout.vue";
 import AuthLayout from "@/layouts/AuthLayout.vue";
 
-let accessToken
+const token = sessionStorage.getItem('accessToken')
 
 const client = new Client({
   brokerURL: 'ws://localhost:8080/ws',
   connectHeaders: {
-    Authorization: `Bearer ${accessToken}`
+    Authorization: `Bearer ${token}`
   },
   onConnect: () => {
     client.subscribe('/user/queue/orders', (message) => {

@@ -50,9 +50,9 @@ function logout(): void {
           {{ t('nav.home') }}
         </RouterLink>
 
-        <a href="#menu" class="text-sm font-medium hover:text-[#a66b45]">
+        <RouterLink to="/menu" class="text-sm font-medium hover:text-[#a66b45]">
           {{ t('nav.menu') }}
-        </a>
+        </RouterLink>
 
         <a href="#about" class="text-sm font-medium hover:text-[#a66b45]">
           {{ t('nav.about') }}
