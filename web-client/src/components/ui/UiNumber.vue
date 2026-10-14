@@ -46,5 +46,6 @@ function handleChange(
       :controls="controls"
       @update:model-value="emit('update:modelValue', $event ?? null)"
       @change="handleChange"
+      v-bind="$attrs"
   />
 </template>

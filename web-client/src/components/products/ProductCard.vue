@@ -3,12 +3,26 @@ import {computed} from 'vue'
 import {useI18n} from 'vue-i18n'
 import type {ProductResponse} from '@/types/product'
 import {CoffeeCup, Dessert} from "@element-plus/icons-vue";
+import {useCartStore} from "@/stores/cartStore.ts";
+import UiButton from "@/components/ui/UiButton.vue";
+import {notificationService} from "@/services/notificationService.ts";
 
 const props = defineProps<{
   product: ProductResponse
 }>()
 
 const {t, locale} = useI18n()
+
+const cartStore = useCartStore()
+
+function addToCart(): void {
+  cartStore.addProduct(props.product.id)
+
+  notificationService.success({
+    title: t('common.success'),
+    message: `${t('menu.addedToCart')}: ${props.product.name}`
+  })
+}
 
 const isEnglish = computed(() => locale.value.startsWith('en'))
 
@@ -66,6 +80,10 @@ const sizeLabel = computed(() => {
         <span class="product-card__price">
           {{ formattedPrice }}
         </span>
+
+        <UiButton type="primary" @click="addToCart" class="coffee-button">
+          {{ t('menu.addToCart') }}
+        </UiButton>
 
         <span class="product-card__availability">
           <span class="product-card__availability-dot"/>

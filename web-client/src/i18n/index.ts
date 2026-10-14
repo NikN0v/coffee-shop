@@ -2,6 +2,25 @@ import {createI18n} from 'vue-i18n'
 
 const messages = {
     ru: {
+        cart: {
+            title: 'Корзина',
+            empty: 'Корзина пока пуста',
+            perItem: 'за шт.',
+            remove: 'Удалить',
+            removeConfirmation: 'Удалить этот товар из корзины?',
+            confirmTitle: 'Подтверждение',
+            subtotal: 'Предварительная сумма',
+            priceNote: 'Окончательная стоимость рассчитывается сервером при оформлении заказа.',
+            checkout: 'Оформить заказ',
+            loadProductsError: 'Не удалось загрузить некоторые товары.',
+            checkProductsError: 'Не удалось проверить все товары. Повторите попытку.',
+            unavailable: 'Нет в наличии',
+            unavailableTitle: 'Товар недоступен',
+            unavailableMessage: 'Товар «{name}» больше недоступен.',
+            orderSuccessTitle: 'Заказ оформлен',
+            orderSuccessMessage: 'Ваш заказ №{id} успешно создан.',
+            orderError: 'Не удалось оформить заказ. Проверьте корзину и попробуйте ещё раз.',
+        },
         menu: {
             eyebrow: 'Наша кофейня',
             title: 'Кофе и десерты с заботой',
@@ -18,12 +37,15 @@ const messages = {
             productCount: 'Товаров: {count}',
             loadProductsError: 'Не удалось загрузить товары. Попробуйте ещё раз.',
             loadCategoriesError: 'Не удалось загрузить категории.',
+            addToCart: 'Добавить в карзину',
+            addedToCart: 'Продукт добавлен в корзину'
         },
         common: {
             save: 'Сохранить',
             cancel: 'Отмена',
             success: 'Успешно',
-            warning: 'Внимание'
+            warning: 'Внимание',
+            error: 'Ошибка'
         },
         nav: {
             home: 'Главная',
@@ -210,6 +232,25 @@ const messages = {
         },
     },
     en: {
+        cart: {
+            title: 'Cart',
+            empty: 'Your cart is empty',
+            perItem: 'each',
+            remove: 'Remove',
+            removeConfirmation: 'Remove this product from your cart?',
+            confirmTitle: 'Confirmation',
+            subtotal: 'Estimated subtotal',
+            priceNote: 'The server calculates the final price when you place your order.',
+            checkout: 'Place order',
+            loadProductsError: 'Could not load some products.',
+            checkProductsError: 'Could not verify all products. Please try again.',
+            unavailable: 'Unavailable',
+            unavailableTitle: 'Product unavailable',
+            unavailableMessage: 'The product "{name}" is no longer available.',
+            orderSuccessTitle: 'Order placed',
+            orderSuccessMessage: 'Your order #{id} has been created successfully.',
+            orderError: 'Could not place the order. Check your cart and try again.',
+        },
         menu: {
             eyebrow: 'Our coffee shop',
             title: 'Coffee and desserts, made with care',
@@ -226,12 +267,15 @@ const messages = {
             productCount: 'Products: {count}',
             loadProductsError: 'Could not load products. Please try again.',
             loadCategoriesError: 'Could not load categories.',
+            addToCart: 'Add to cart',
+            addedToCart: 'Product added to cart'
         },
         common: {
             save: 'Save',
             cancel: 'Cancel',
             success: 'Success',
-            warning: 'Warning'
+            warning: 'Warning',
+            error: 'Error'
         },
         nav: {
             home: 'Home',

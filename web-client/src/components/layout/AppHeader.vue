@@ -2,18 +2,22 @@
 import {ref, watch} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
 import {useI18n} from 'vue-i18n'
-import {ArrowDown, Close, Menu, Setting} from '@element-plus/icons-vue'
+import {ArrowDown, Close, Menu, Setting, ShoppingCart} from '@element-plus/icons-vue'
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue'
 import {useAuthStore} from '@/stores/authStore'
 import {notificationService} from '@/services/notificationService'
 import UiButton from "@/components/ui/UiButton.vue";
+import {useCartStore} from "@/stores/cartStore.ts";
+import CartDrawer from "@/components/cart/CartDrawer.vue";
 
 const {t} = useI18n()
 const route = useRoute()
 const router = useRouter()
 const authStore = useAuthStore()
 
+const cartStore = useCartStore()
 const isMenuOpen = ref(false)
+const cartVisible = ref(false)
 
 function handleAdminCommand(path: string) {
   router.push(path)
@@ -57,6 +61,17 @@ function logout(): void {
         <a href="#about" class="text-sm font-medium hover:text-[#a66b45]">
           {{ t('nav.about') }}
         </a>
+
+        <UiButton @click="cartVisible = true">
+          <el-icon><ShoppingCart/></el-icon>
+          <span>{{ t('cart.title') }}</span>
+
+          <el-badge
+              v-if="cartStore.totalQuantity > 0"
+              :value="cartStore.totalQuantity"
+              :max="99"
+          />
+        </UiButton>
       </nav>
 
       <div class="hidden items-center gap-3 md:flex">
@@ -149,6 +164,8 @@ function logout(): void {
       </div>
     </div>
   </header>
+
+  <CartDrawer v-model="cartVisible"/>
 </template>
 
 <style scoped>

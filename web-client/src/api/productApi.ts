@@ -16,6 +16,11 @@ export const productApi  = {
         return api.get<ProductResponse>(`/products/${id}`)
     },
 
+    async getByIdForCart(id: number): Promise<ProductResponse> {
+        const { data } = await api.get<ProductResponse>(`/products/${id}`)
+        return data
+    },
+
     create(request: ProductCreateRequest) {
         return api.post<ProductResponse>('/products', request)
     },
