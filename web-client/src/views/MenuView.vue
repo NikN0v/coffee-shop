@@ -111,9 +111,12 @@ onMounted(async () => {
       </div>
 
       <div class="menu-hero__decoration" aria-hidden="true">
-        <el-icon :size="76">
-          <CoffeeCup/>
-        </el-icon>
+        <img
+            src="/images/hero-coffee.jpg"
+            alt="Свежеприготовленный кофе в уютной кофейне"
+            class="relative w-full rounded-4xl"
+            fetchpriority="high"
+        />
       </div>
     </section>
 

@@ -99,6 +99,11 @@ class SecurityConfig {
                 ).permitAll()
 
                 it.requestMatchers(
+                    HttpMethod.GET,
+                    "/api/orders/admin"
+                ).hasRole("ADMIN")
+
+                it.requestMatchers(
                     HttpMethod.PATCH,
                     "/api/categories/**",
                     "/api/products/**",

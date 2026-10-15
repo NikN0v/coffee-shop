@@ -22,6 +22,9 @@ class OrderController(
     private val orderService: OrderService
 ) {
 
+    @GetMapping("/admin")
+    fun getAllOrders(): List<OrderResponse> = orderService.getAllOrders()
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun create(

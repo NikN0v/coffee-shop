@@ -15,49 +15,67 @@ const routes: RouteRecordRaw[] = [
         path: '/',
         name: 'home',
         component: () => import('@/views/HomeView.vue'),
-        meta: { layout: 'main' }
+        meta: {layout: 'main'}
     },
     {
         path: '/login',
         name: 'login',
         component: () => import('@/views/LoginView.vue'),
-        meta: { layout: 'auth', guestOnly: true }
+        meta: {layout: 'auth', guestOnly: true}
     },
     {
         path: '/register',
         name: 'register',
         component: () => import('@/views/RegisterView.vue'),
-        meta: { layout: 'auth', guestOnly: true }
+        meta: {layout: 'auth', guestOnly: true}
     },
     {
         path: '/admin',
         name: 'admin',
         component: () => import('@/views/AdminView.vue'),
-        meta: { layout: 'main', requiresAuth: true, adminOnly: true }
+        meta: {layout: 'main', requiresAuth: true, adminOnly: true}
     },
     {
         path: '/admin/categories',
         name: 'admin-categories',
         component: () => import('@/views/AdminCategoriesView.vue'),
-        meta: { layout: 'main', requiresAuth: true, adminOnly: true }
+        meta: {layout: 'main', requiresAuth: true, adminOnly: true}
     },
     {
-      path: '/admin/products',
-      name: 'admin-products',
-      component: () => import('@/views/AdminProductsView.vue'),
-      meta: { layout: 'main', requiresAuth: true, adminOnly: true }
+        path: '/admin/products',
+        name: 'admin-products',
+        component: () => import('@/views/AdminProductsView.vue'),
+        meta: {layout: 'main', requiresAuth: true, adminOnly: true}
     },
     {
-      path: '/menu',
-      name: 'menu',
-      component: () => import('@/views/MenuView.vue'),
-      meta: { layout: 'main' }
+        path: '/menu',
+        name: 'menu',
+        component: () => import('@/views/MenuView.vue'),
+        meta: {layout: 'main'}
+    },
+    {
+        path: '/admin/orders',
+        name: 'admin-orders',
+        component: () => import('@/views/AdminOrdersView.vue'),
+        meta: {layout: 'main', requiresAuth: true, adminOnly: true}
+    },
+    {
+        path: '/my-orders/:id',
+        name: 'my-order-detail',
+        component: () => import('@/views/MyOrderDetailsView.vue'),
+        meta: {layout: 'main', requiresAuth: true}
+    },
+    {
+        path: '/my-orders',
+        name: 'orders',
+        component: () => import('@/views/MyOrdersView.vue'),
+        meta: {layout: 'main', requiresAuth: true}
     },
     {
         path: '/:pathMatch(.*)*',
         name: 'not-found',
         component: () => import('@/views/NotFound.vue'),
-        meta: { layout: 'main' }
+        meta: {layout: 'main'}
     }
 ]
 
@@ -71,12 +89,12 @@ router.beforeEach((to) => {
     if (to.meta.requiresAuth && !useAuthStore().isAuthenticated) {
         return {
             name: 'login',
-            query: { redirect: to.fullPath }
+            query: {redirect: to.fullPath}
         }
     }
 
-    if (to.meta.guestOnly && useAuthStore().isAuthenticated) return { name: 'home' }
-    if (to.meta.adminOnly && useAuthStore().user?.role !== 'ADMIN') return { name: 'home' }
+    if (to.meta.guestOnly && useAuthStore().isAuthenticated) return {name: 'home'}
+    if (to.meta.adminOnly && useAuthStore().user?.role !== 'ADMIN') return {name: 'home'}
 
     return true
 })

@@ -1,3 +1,11 @@
+export type OrderStatus =
+    | 'CREATED'
+    | 'ACCEPTED'
+    | 'PREPARING'
+    | 'READY'
+    | 'PICKED_UP'
+    | 'CANCELLED'
+
 export type OrderItemRequest = {
     productId: number
     quantity: number
@@ -21,4 +29,8 @@ export type OrderResponse = {
     totalPrice: number
     createdAt: string
     items: OrderItemResponse[]
+}
+
+export type OrderStatusRequest = {
+    status: OrderStatus
 }

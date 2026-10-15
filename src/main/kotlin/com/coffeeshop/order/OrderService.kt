@@ -20,6 +20,21 @@ class OrderService(
     private val preparationService: OrderPreparationService
 ) {
 
+    @Transactional(readOnly = true)
+    fun getAllOrders(): List<OrderResponse> {
+        val orders = orderRepository.findAllByOrderByCreatedAtDesc()
+
+        if (orders.isEmpty()) return emptyList()
+
+        val itemsByOrder = orderItemRepository
+            .findAllByOrderIdIn(orders.map { it.id!! })
+            .groupBy { it.order.id!! }
+
+        return orders.map { order ->
+            toResponse(order, itemsByOrder[order.id].orEmpty())
+        }
+    }
+
     @Transactional
     fun create(userEmail: String, request: OrderCreateRequest): OrderResponse {
         val user = userRepository.findByEmail(userEmail)

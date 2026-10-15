@@ -7,4 +7,6 @@ interface OrderRepository : JpaRepository<Order, Long> {
     fun findAllByUserIdOrderByCreatedAtDesc(userId: Long): List<Order>
 
     fun findByIdAndUserId(id: Long, userId: Long): Optional<Order>
+
+    fun findAllByOrderByCreatedAtDesc(): List<Order>
 }

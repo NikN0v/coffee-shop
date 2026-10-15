@@ -2,6 +2,7 @@ import type {LoginRequest, RegisterRequest, UserResponse} from "@/types/auth.ts"
 import {defineStore} from "pinia";
 import {computed, ref} from "vue";
 import {authApi} from "@/api/authApi.ts";
+import {orderWebSocket} from "@/services/orderWebSocket.ts";
 
 const TOKEN_KEY = 'accessToken'
 const USER_KEY = 'currentUser'
@@ -31,6 +32,8 @@ export const useAuthStore = defineStore('auth', () => {
 
         sessionStorage.setItem(TOKEN_KEY, res.accessToken)
         sessionStorage.setItem(USER_KEY, JSON.stringify(res.user))
+
+        orderWebSocket.connect()
     }
 
     async function register(request: RegisterRequest): Promise<UserResponse> {
@@ -43,6 +46,8 @@ export const useAuthStore = defineStore('auth', () => {
 
         sessionStorage.removeItem(TOKEN_KEY)
         sessionStorage.removeItem(USER_KEY)
+
+        orderWebSocket.disconnect()
     }
 
     return {

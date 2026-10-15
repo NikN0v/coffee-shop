@@ -46,7 +46,10 @@ function logout(): void {
   <header class="sticky top-0 z-50 border-b border-[#e9dfd3] bg-[#faf7f2]/95 backdrop-blur">
     <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
       <RouterLink to="/" class="shrink-0 text-xl font-bold sm:text-2xl">
-        Coffee<span class="text-[#a66b45]">House</span>
+        <div class="flex flex-row items-center">
+          <img :src="'../logo.svg'" style="width: 40px"/>
+          Coffee<span class="text-[#a66b45]">House</span>
+        </div>
       </RouterLink>
 
       <nav class="hidden items-center gap-8 md:flex">
@@ -62,7 +65,11 @@ function logout(): void {
           {{ t('nav.about') }}
         </a>
 
-        <UiButton @click="cartVisible = true">
+        <RouterLink v-if="authStore.isAuthenticated" :to="{name: 'orders'}" class="text-sm font-medium hover:text-[#a66b45]">
+          {{ t('myOrders.title') }}
+        </RouterLink>
+
+        <UiButton type="default" @click="cartVisible = true">
           <el-icon><ShoppingCart/></el-icon>
           <span>{{ t('cart.title') }}</span>
 
@@ -98,7 +105,7 @@ function logout(): void {
             {{ authStore.user?.name }}
           </span>
 
-          <UiButton @click="logout">
+          <UiButton type="default" @click="logout">
             {{ t('nav.logout') }}
           </UiButton>
         </template>
@@ -128,18 +135,18 @@ function logout(): void {
             <el-dropdown-item command="/admin/products">
               {{ t('nav.product') }}
             </el-dropdown-item>
-            <el-dropdown-item command="/admin/orders" disabled>
+            <el-dropdown-item command="/admin/orders">
               {{ t('nav.order') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
 
-      <UiButton class="!md:hidden" aria-label="Toggle navigation" @click="isMenuOpen = !isMenuOpen">
-        <el-icon>
-          <component :is="isMenuOpen ? Close : Menu"/>
-        </el-icon>
-      </UiButton>
+<!--      <UiButton class="!sm:hidden" aria-label="Toggle navigation" @click="isMenuOpen = !isMenuOpen">-->
+<!--        <el-icon>-->
+<!--          <component :is="isMenuOpen ? Close : Menu"/>-->
+<!--        </el-icon>-->
+<!--      </UiButton>-->
     </div>
 
     <div v-if="isMenuOpen" class="border-t border-[#e9dfd3] p-4 md:hidden">
